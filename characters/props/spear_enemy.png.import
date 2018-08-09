@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rock.png-7b233edea0cdf71b130fc447a4f10124.stex"
+path="res://.import/spear_enemy.png-bacdcaf428f0e7ac01fa08581febc7b6.stex"
 
 [deps]
 
-source_file="res://environment/rock.png"
-dest_files=[ "res://.import/rock.png-7b233edea0cdf71b130fc447a4f10124.stex" ]
+source_file="res://characters/props/spear_enemy.png"
+dest_files=[ "res://.import/spear_enemy.png-bacdcaf428f0e7ac01fa08581febc7b6.stex" ]
 
 [params]
 

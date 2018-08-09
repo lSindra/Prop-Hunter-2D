@@ -3,8 +3,7 @@ extends "res://characters/character.gd"
 signal direction_changed
 signal prop_changed
 signal prop_choose
-
-var player_skin
+signal mirror_prop
 
 func _ready():
 	player_skin = 0
@@ -21,7 +20,9 @@ func _physics_process(delta):
 	
 	# Choose prop
 	if Input.is_action_just_pressed("mirror_prop"):
-		pass
+		emit_signal('mirror_prop')
+	elif Input.is_action_just_pressed("prop_choose"):
+		emit_signal('prop_choose')
 	# Change prop
 	elif Input.is_action_just_pressed("next_prop"):
 		emit_signal('prop_changed', 1)

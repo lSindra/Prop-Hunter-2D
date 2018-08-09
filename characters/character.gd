@@ -5,6 +5,7 @@ signal speed_updated
 signal state_changed
 
 var input_direction = Vector2()
+var look_direction = Vector2()
 var last_move_direction = Vector2(1, 0)
 
 const MAX_WALK_SPEED = 450
@@ -14,6 +15,7 @@ var speed = 0
 var max_speed = 0
 
 var motion = Vector2()
+var player_skin
 
 func _physics_process(delta):
 	if input_direction:

@@ -24,3 +24,12 @@ func _init():
 				Prop.new("res://characters/props/rock.png", Transform2D(0.0, Vector2(0, -10)), shape2)]
 	if skins == null:
 		skins = [Prop.new("res://characters/skins/body.png", Transform2D(0.0, Vector2(0, -61)), shape1)]
+
+func search_by_sprite_path(sprite_path):
+	if props != null:
+		var index = 0
+		for prop in props:
+			if prop.sprite_path == sprite_path:
+				return index
+			index += 1
+	return -1
