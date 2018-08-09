@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 28.0186, 15.3177 )
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -53,7 +53,7 @@ position = Vector2( 0.210658, 61.7749 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="Shape" type="CollisionShape2D" parent="." index="3"]
 
 show_behind_parent = true
 position = Vector2( 0.362808, -7.61905 )

@@ -2,6 +2,7 @@ extends "res://characters/character.gd"
 
 signal direction_changed
 signal prop_changed
+signal prop_choose
 
 var player_skin
 
@@ -18,10 +19,13 @@ func _physics_process(delta):
 	# Running
 	max_speed = MAX_RUN_SPEED if Input.is_action_pressed("run") else MAX_WALK_SPEED
 	
+	# Choose prop
+	if Input.is_action_just_pressed("mirror_prop"):
+		pass
 	# Change prop
-	if Input.is_action_just_pressed("next_prop"):
+	elif Input.is_action_just_pressed("next_prop"):
 		emit_signal('prop_changed', 1)
 		
-	if Input.is_action_just_pressed("prev_prop"):
+	elif Input.is_action_just_pressed("prev_prop"):
 		emit_signal('prop_changed', -1)
-#	
+	
