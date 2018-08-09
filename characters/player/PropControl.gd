@@ -22,7 +22,8 @@ func _ready():
 
 func _on_Player_prop_choose(prop_id):
 	prop = PlayerProps.props[prop_id]
-	change_prop(prop)	
+	change_prop(prop)
+	current_prop = prop_id
 
 func _on_Player_prop_changed(prop_control):
 	current_prop = bind_array(current_prop + prop_control, PlayerProps.props.size())
