@@ -1,12 +1,9 @@
 extends Node
 
-const SKINS_PATH = "res://characters/skins/"
-const PROP_PATH = "res://characters/props/"
-const PROPS = [ ["body1", -61], ["body2", -61], ["rock", -10]]
-
 var player
 var body
 var current_prop = 0
+var prop
 
 func _ready():
 	player = $".."
@@ -16,15 +13,17 @@ func _ready():
 	
 	set_process(false)
 
-func _on_Player_prop_changed(prop):
-	current_prop = bind_array(current_prop + prop, PROPS.size())
+func _on_Player_prop_changed(prop_control):
+	current_prop = bind_array(current_prop + prop_control, PlayerProps.props.size())
 	
 	if current_prop == 0:
-		body.set_texture(load(SKINS_PATH + player.player_skin[0] + ".png"))
-		body.set_transform(Transform2D(0.0, Vector2(0, player.player_skin[1])))
+		prop = PlayerProps.skins[current_prop]
+		body.set_texture(load(PlayerProps.skins[player.player_skin].sprite_path))
+		body.set_transform(PlayerProps.skins[player.player_skin].offset)
 	else:
-		body.set_texture(load(PROP_PATH + PROPS[current_prop - 1][0] + ".png"))
-		body.set_transform(Transform2D(0.0, Vector2(0, PROPS[current_prop - 1][1])))
+		prop = PlayerProps.props[current_prop - 1]
+		body.set_texture(load(prop.sprite_path))
+		body.set_transform(prop.offset)
 	
 func bind_array(index, size):
 	if index < 0:
