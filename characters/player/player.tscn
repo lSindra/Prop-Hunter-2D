@@ -13,7 +13,13 @@ script = ExtResource( 2 )
 
 [node name="Body" parent="Pivot" index="0"]
 
+position = Vector2( 0, -61 )
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+
+[node name="Shadow" parent="Pivot/Body" index="0"]
+
+visible = false
 
 [node name="DirectionVisualizer" type="Position2D" parent="." index="4"]
 

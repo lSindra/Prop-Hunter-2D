@@ -6,7 +6,7 @@ signal prop_changed
 var player_skin
 
 func _ready():
-	player_skin = "body"
+	player_skin = ["body", -61]
 
 func _physics_process(delta):
 	input_direction = Vector2()
