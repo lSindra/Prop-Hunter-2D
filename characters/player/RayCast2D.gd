@@ -11,7 +11,7 @@ func _ready():
 	player.connect("mirror_prop", self, '_on_Player_mirror_prop')
 	
 func _physics_process(delta):
-	cast_to = player.get_local_mouse_position()
+	cast_to = player.get_local_mouse_position().clamped(150.0)
 	
 	if is_colliding():
 		collider = get_collider()
