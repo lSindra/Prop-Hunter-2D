@@ -5,14 +5,14 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 23.4314, 15.2998 )
+extents = Vector2( 23.4314, 22.0401 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 44.0727, 26.1865 )
+extents = Vector2( 44.0727, 35.4548 )
 
-[node name="Rock" type="StaticBody2D" groups=[
+[node name="Rock" type="StaticBody2D" index="0" groups=[
 "environment",
 ]]
 
@@ -32,12 +32,12 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 43.7353, 34.2526 )
+position = Vector2( 42.8328, 27.0326 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( -1.99999, -6.48269 )
+position = Vector2( -0.194937, -15.5077 )
 shape = SubResource( 2 )
 
 
