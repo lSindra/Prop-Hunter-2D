@@ -8,7 +8,7 @@ func files_with_pattern_in_directory(path, pattern):
 		while (file != ""):
 			if not dir.current_is_dir():
 				if file.match(pattern):
-					files.append(file)
+					files.append(path + file)
 			file = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")

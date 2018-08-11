@@ -10,6 +10,9 @@ var last_move_direction = Vector2(1, 0)
 enum STATES { IDLE, RUNNING }
 var state = null
 
+var current_animation = []
+var current_frame = 0
+
 const MAX_WALK_SPEED = 450
 const MAX_RUN_SPEED = 700
 
@@ -54,14 +57,29 @@ func animate():
 		elif mouse_loc.x > 0:
 			body.flip_h = false
 		if input_direction == Vector2(0,0):
-			if state != IDLE: state = IDLE
+			if state != IDLE: 
+				state = IDLE
+				load_animation(state)
 		else:
-			if state != RUNNING: state = RUNNING
+			if state != RUNNING: 
+				state = RUNNING
+				load_animation(state)
 		next_frame_by_anim()
 
+func load_animation(animation):
+	current_animation = []
+	var frames
+	match animation:
+		IDLE:
+			frames = PlayerProps.skins[player_skin].idle_anim
+		RUNNING:
+			frames = PlayerProps.skins[player_skin].running_anim
+	for frame in frames:
+		current_animation.append(load(frame))
+
 func next_frame_by_anim():
-	pass
-	
+	current_frame = (current_frame + 1)%current_animation.size()
+	body.set_texture(current_animation[current_frame])
 
 func set_body(prop):
 	body.set_texture(load(prop.sprite_path))
@@ -75,8 +93,5 @@ func _on_Control_change_prop(prop):
 
 func _on_Control_use_skin():
 	var prop = PlayerProps.skins[player_skin]
-	#TEMPORARY
-	#prop.sprite_path = prop.sprite_path + "idle00.png"
-	#
 	set_body(prop)
 	is_using_skin = true
