@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-# For visualization
 signal speed_updated
 signal state_changed
 
@@ -16,6 +15,18 @@ var max_speed = 0
 
 var motion = Vector2()
 var player_skin
+var is_using_skin = true
+var body
+var shape
+var prop_control
+
+func _ready():
+	body = $"Pivot/Body"
+	shape = $Shape
+	prop_control=$PropControl
+	
+	prop_control.connect("change_prop", self, '_on_Control_change_prop')
+	prop_control.connect("use_skin", self, '_on_Control_use_skin')
 
 func _physics_process(delta):
 	if input_direction:
@@ -29,3 +40,29 @@ func _physics_process(delta):
 
 	var velocity = input_direction.normalized() * speed
 	move_and_slide(velocity, Vector2(), 5, 2)
+	
+	animate()
+	
+func animate():
+	if is_using_skin:
+		var mouse_loc = get_local_mouse_position()
+		if mouse_loc.x < 0:
+			body.flip_h = true
+		elif mouse_loc.x > 0:
+			body.flip_h = false
+		
+
+func _on_Control_change_prop(prop):
+	set_body(prop)
+	is_using_skin = false
+
+func _on_Control_use_skin():
+	var prop = PlayerProps.skins[player_skin]
+	set_body(prop)
+	is_using_skin = true
+
+func set_body(prop):
+	body.set_texture(load(prop.sprite_path))
+	body.set_transform(prop.offset)
+	body.set_scale(prop.scale)
+	shape.set_shape(prop.shape)
