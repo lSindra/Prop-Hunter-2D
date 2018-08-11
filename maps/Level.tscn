@@ -11,7 +11,7 @@ sort_enabled = true
 
 [node name="Player" parent="YSort" index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 1003.15, 497.292 )
+position = Vector2( 832.09, 552.231 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player" index="7"]
 

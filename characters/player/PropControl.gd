@@ -15,7 +15,7 @@ func _ready():
 	
 	ray_cast = $"../RayCast2D"
 	ray_cast.connect("prop_choose", self, '_on_Player_prop_choose')
-
+	
 	set_process(false)
 
 func _on_Player_prop_choose(prop_id):
