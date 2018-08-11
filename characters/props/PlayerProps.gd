@@ -1,37 +1,7 @@
 extends Node
 
-class Prop:
-	var name
-	var sprite_path
-	var offset = Transform2D()
-	var shape = RectangleShape2D.new()
-	var scale = Vector2()
-	
-	func _init(name, sprite_path, offset, shape, scale=Vector2(1,1)):
-		self.name = name
-		self.sprite_path = sprite_path
-		self.offset = offset
-		self.shape = shape
-		self.scale = scale
-
-class Skin extends Prop:
-	var idle_anim = null setget ,get_idle_anim
-	var running_anim = null setget ,get_running_anim
-	
-	func _init(name, sprite_path, offset, shape, scale).(name, sprite_path, offset, shape, scale):
-		pass
-	
-	func get_idle_anim():
-		if idle_anim == null:
-			idle_anim = list_files_with_pattern_in_directory(sprite_path, "idle*")
-			print("loading idle_anim")
-		return idle_anim
-	func get_running_anim():
-		if running_anim == null:
-			running_anim = list_files_with_pattern_in_directory(sprite_path, "running*")
-			print("loading running_anim")
-		return running_anim
-
+var Prop = load("res://characters/helpers/PropModel/Prop.gd")
+var Skin = load("res://characters/helpers/PropModel/Skin.gd")
 
 var props = null
 var skins = null
@@ -56,21 +26,3 @@ func search_by_sprite_path(sprite_path):
 				return index
 			index += 1
 	return -1
-
-#move to file manager singleton
-func list_files_with_pattern_in_directory(path, pattern):
-	var files = []
-	var dir = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
-	
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with("."):
-			#logic
-			if file.match(pattern):
-				files.append(file)
-		dir.list_dir_end()
-	return files
