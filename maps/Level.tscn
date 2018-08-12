@@ -42,6 +42,6 @@ _sections_unfolded = [ "Limit", "Smoothing" ]
 
 [node name="Rock" parent="YSort" index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 1009.69, 465.695 )
+position = Vector2( 1005.09, 461.096 )
 
 

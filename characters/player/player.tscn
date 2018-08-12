@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/player/player.gd" type="Script" id=2]
@@ -6,23 +6,27 @@
 [ext_resource path="res://characters/player/PropControl.gd" type="Script" id=4]
 [ext_resource path="res://characters/player/RayCast2D.gd" type="Script" id=5]
 
-[node name="Player" index="0" instance=ExtResource( 1 )]
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0.427643, 0.394531, 1, 0.176784, 0.31012, 0.304688, 1, 0.767961 )
+
+[node name="Player" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
-[node name="Body" parent="Pivot" index="0"]
+[node name="Shadow" parent="Pivot" index="0"]
+
+position = Vector2( 0, 0 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+
+[node name="Body" parent="Pivot" index="1"]
 
 position = Vector2( 0, -52 )
 scale = Vector2( 5, 5 )
 z_as_relative = false
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
-
-[node name="Shadow" parent="Pivot/Body" index="0"]
-
-position = Vector2( 0, 11 )
-scale = Vector2( 0.17, 0.1 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="PropControl" type="Node" parent="." index="2"]
 
@@ -30,6 +34,7 @@ script = ExtResource( 4 )
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="3"]
 
+show_behind_parent = true
 position = Vector2( 0.663422, -16.5855 )
 enabled = true
 exclude_parent = true
@@ -41,11 +46,12 @@ _sections_unfolded = [ "Material", "Visibility" ]
 [node name="Line2D" type="Line2D" parent="RayCast2D" index="0"]
 
 points = PoolVector2Array( 0, 0, 50, 0 )
-width = 10.0
+width = 5.0
 default_color = Color( 0.0392157, 0.329412, 0.968627, 1 )
+gradient = SubResource( 1 )
 texture_mode = 199198272
 sharp_limit = 2.0
 round_precision = 8
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Fill", "Visibility" ]
 
 

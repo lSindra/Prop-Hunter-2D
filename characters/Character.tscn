@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
-[ext_resource path="res://characters/npc/body.png" type="Texture" id=2]
-[ext_resource path="res://characters/shadow.png" type="Texture" id=3]
+[ext_resource path="res://characters/shadow.png" type="Texture" id=2]
+[ext_resource path="res://characters/npc/body.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.0186, 15.3177 )
@@ -21,24 +21,27 @@ script = ExtResource( 1 )
 
 show_behind_parent = true
 
-[node name="Body" type="Sprite" parent="Pivot" index="0"]
-
-show_behind_parent = true
-position = Vector2( -0.342688, -61.8997 )
-texture = ExtResource( 2 )
-
-[node name="Shadow" type="Sprite" parent="Pivot/Body" index="0"]
+[node name="Shadow" type="Sprite" parent="Pivot" index="0"]
 
 self_modulate = Color( 1, 1, 1, 0.502784 )
 show_behind_parent = true
-position = Vector2( 0.210658, 61.7749 )
+position = Vector2( -0.13203, -0.124802 )
+scale = Vector2( 0.8, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Body" type="Sprite" parent="Pivot" index="1"]
+
+show_behind_parent = true
+position = Vector2( -0.342688, -61.8997 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Material" ]
 
 [node name="Shape" type="CollisionShape2D" parent="." index="1"]
 
+visible = false
 show_behind_parent = true
 position = Vector2( 0.362808, -7.61905 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 

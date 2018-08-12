@@ -12,7 +12,7 @@ extents = Vector2( 23.4314, 15.7218 )
 custom_solver_bias = 0.0
 extents = Vector2( 44.0727, 21.0142 )
 
-[node name="Rock" type="StaticBody2D" groups=[
+[node name="Rock" type="StaticBody2D" index="0" groups=[
 "environment",
 ]]
 

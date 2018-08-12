@@ -77,6 +77,7 @@ func load_animation(animation):
 			frames = PlayerProps.skins[player_skin].running_anim
 	for frame in frames:
 		current_animation.append(load(frame))
+	last_anim_update = 0
 
 func next_frame_by_anim():
 	current_frame = (current_frame + 1) % current_animation.size()
@@ -90,13 +91,14 @@ func set_body(prop):
 	body.set_transform(prop.offset)
 	body.set_scale(prop.scale)
 	shape.set_shape(prop.shape)
+	$"Pivot/Shadow".set_visible(is_using_skin)
 
 func _on_Control_change_prop(prop):
-	set_body(prop)
 	is_using_skin = false
+	set_body(prop)
 
 func _on_Control_use_skin():
+	is_using_skin = true
 	var skin = PlayerProps.skins[player_skin]
 	set_body(skin)
 	anim_update_speed = skin.update_speed
-	is_using_skin = true

@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Create the Character scene (start)"
+config/name="Pixel Hunter"
 run/main_scene="res://maps/Level.tscn"
 config/icon="res://icon.png"
 
