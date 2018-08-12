@@ -8,7 +8,7 @@
 [ext_resource path="res://characters/player/PropControl.gd" type="Script" id=6]
 [ext_resource path="res://characters/player/RayCast2D.gd" type="Script" id=7]
 
-[node name="Player" instance=ExtResource( 1 )]
+[node name="Player" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 
@@ -22,7 +22,9 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility
 
 [node name="Shadow" parent="Pivot/Body" index="0"]
 
-visible = false
+position = Vector2( 0, 11 )
+scale = Vector2( 0.15, 0.1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="DirectionVisualizer" type="Position2D" parent="." index="4"]
 
