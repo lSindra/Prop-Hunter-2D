@@ -12,7 +12,9 @@ var state = null
 
 var current_animation = []
 var current_frame = 0
+var last_anim_update = 0
 
+const TICK_TIME = 16
 const MAX_WALK_SPEED = 450
 const MAX_RUN_SPEED = 700
 
@@ -47,9 +49,11 @@ func _physics_process(delta):
 	var velocity = input_direction.normalized() * speed
 	move_and_slide(velocity, Vector2(), 5, 2)
 	
-	animate()
-	
+	if last_anim_update < OS.get_ticks_msec() - TICK_TIME * 8:
+		animate()
+		
 func animate():
+	last_anim_update = OS.get_ticks_msec()
 	if is_using_skin:
 		var mouse_loc = get_local_mouse_position()
 		if mouse_loc.x < 0:
