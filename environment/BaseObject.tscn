@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/props/body1.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.3348, 19.7526 )
+
+[node name="Rock" type="StaticBody2D" index="0" groups=[
+"environment",
+]]
+
+input_pickable = false
+collision_layer = 9
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 12.0737, 1.98891 )
+texture = ExtResource( 1 )
+offset = Vector2( -13, -52 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -1.99999, 0.737358 )
+shape = SubResource( 1 )
+
+

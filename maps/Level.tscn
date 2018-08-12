@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/BaseObject.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 
@@ -43,5 +44,9 @@ _sections_unfolded = [ "Limit", "Smoothing" ]
 [node name="Rock" parent="YSort" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 1005.09, 461.096 )
+
+[node name="Rock" parent="YSort/Rock" index="3" instance=ExtResource( 3 )]
+
+position = Vector2( -332.386, -7.13345 )
 
 
