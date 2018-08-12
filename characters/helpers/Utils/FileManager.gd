@@ -12,4 +12,5 @@ func files_with_pattern_in_directory(path, pattern):
 			file = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
+	files.sort()
 	return files

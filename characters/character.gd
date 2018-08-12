@@ -13,6 +13,7 @@ var state = null
 var current_animation = []
 var current_frame = 0
 var last_anim_update = 0
+var anim_update_speed = 10
 
 const TICK_TIME = 16
 const MAX_WALK_SPEED = 450
@@ -49,7 +50,7 @@ func _physics_process(delta):
 	var velocity = input_direction.normalized() * speed
 	move_and_slide(velocity, Vector2(), 5, 2)
 	
-	if last_anim_update < OS.get_ticks_msec() - TICK_TIME * 8:
+	if last_anim_update < OS.get_ticks_msec() - TICK_TIME * anim_update_speed:
 		animate()
 		
 func animate():
@@ -82,7 +83,7 @@ func load_animation(animation):
 		current_animation.append(load(frame))
 
 func next_frame_by_anim():
-	current_frame = (current_frame + 1)%current_animation.size()
+	current_frame = (current_frame + 1) % current_animation.size()
 	body.set_texture(current_animation[current_frame])
 
 func set_body(prop):
@@ -96,6 +97,7 @@ func _on_Control_change_prop(prop):
 	is_using_skin = false
 
 func _on_Control_use_skin():
-	var prop = PlayerProps.skins[player_skin]
-	set_body(prop)
+	var skin = PlayerProps.skins[player_skin]
+	set_body(skin)
+	anim_update_speed = skin.update_speed
 	is_using_skin = true
