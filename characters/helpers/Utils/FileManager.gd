@@ -1,4 +1,4 @@
-func files_with_pattern_in_directory(path, pattern):
+static func files_with_pattern_in_directory(path, pattern):
 	var files = []
 	var dir = Directory.new()
 	if dir.open(path) == OK:

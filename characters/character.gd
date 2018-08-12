@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-signal speed_updated
-signal state_changed
-
 var input_direction = Vector2()
 var look_direction = Vector2()
 var last_move_direction = Vector2(1, 0)
@@ -45,7 +42,6 @@ func _physics_process(delta):
 			speed = max_speed
 	else:
 		speed = 0
-	emit_signal('speed_updated', speed)
 
 	var velocity = input_direction.normalized() * speed
 	move_and_slide(velocity, Vector2(), 5, 2)
@@ -87,7 +83,10 @@ func next_frame_by_anim():
 	body.set_texture(current_animation[current_frame])
 
 func set_body(prop):
-	body.set_texture(load(prop.sprite_path))
+	if not prop is load("res://characters/helpers/PropModel/Skin.gd"):
+		body.set_texture(load(prop.sprite_path))
+	else:
+		body.set_texture(StreamTexture.new())
 	body.set_transform(prop.offset)
 	body.set_scale(prop.scale)
 	shape.set_shape(prop.shape)

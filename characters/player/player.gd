@@ -1,6 +1,5 @@
 extends "res://characters/character.gd"
 
-signal direction_changed
 signal prop_changed
 signal prop_choose
 signal mirror_prop
@@ -12,8 +11,6 @@ func _physics_process(delta):
 	input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
-	
-	emit_signal('direction_changed', input_direction)
 	
 	# Running
 	max_speed = MAX_RUN_SPEED if Input.is_action_pressed("run") else MAX_WALK_SPEED

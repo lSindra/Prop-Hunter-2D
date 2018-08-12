@@ -3,15 +3,19 @@ extends RayCast2D
 var player
 var mouse_pos
 var collider
+var line
 
 signal prop_choose
 
 func _ready():
 	player = $".."
 	player.connect("mirror_prop", self, '_on_Player_mirror_prop')
+	line = $Line2D
 	
 func _physics_process(delta):
 	cast_to = player.get_local_mouse_position().clamped(150.0)
+	
+	line.points[1] = player.get_local_mouse_position().clamped(150.0)
 	
 	if is_colliding():
 		collider = get_collider()
