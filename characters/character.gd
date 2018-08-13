@@ -33,6 +33,7 @@ func _ready():
 	
 	prop_control.connect("change_prop", self, '_on_Control_change_prop')
 	prop_control.connect("use_skin", self, '_on_Control_use_skin')
+	
 
 func _physics_process(delta):
 	if input_direction:
@@ -95,6 +96,7 @@ func set_body(prop):
 
 func _on_Control_change_prop(prop):
 	is_using_skin = false
+	body.flip_h = false
 	set_body(prop)
 
 func _on_Control_use_skin():
