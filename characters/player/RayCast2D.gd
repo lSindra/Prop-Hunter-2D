@@ -1,5 +1,7 @@
 extends RayCast2D
 
+signal prop_choose
+
 var player
 var mouse_pos
 var did_mouse_move
@@ -10,8 +12,6 @@ var detected_sprite
 var aura_shader
 
 var timer
-
-signal prop_choose
 
 func _ready():
 	player = $".."

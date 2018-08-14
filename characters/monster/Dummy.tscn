@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/monster/dummy_char.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/monster/dummy.png" type="Texture" id=2]
+
+[node name="Dummy" index="0" instance=ExtResource( 1 )]
+
+collision_layer = 16
+collision_mask = 17
+
+[node name="Health" parent="." index="2"]
+
+max_health = 5
+
+[node name="Body" parent="BodyPivot" index="0"]
+
+texture = ExtResource( 2 )
+
+

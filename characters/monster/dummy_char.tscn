@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://characters/character.gd" type="Script" id=1]
+[ext_resource path="res://characters/monster/dummy_char.gd" type="Script" id=1]
 [ext_resource path="res://characters/health.gd" type="Script" id=2]
-[ext_resource path="res://characters/shadow.png" type="Texture" id=3]
-[ext_resource path="res://characters/npc/body.png" type="Texture" id=4]
-[ext_resource path="res://characters/weapon/weapon-pivot.gd" type="Script" id=5]
+[ext_resource path="res://characters/npc/body.png" type="Texture" id=3]
+[ext_resource path="res://characters/weapon/weapon-pivot.gd" type="Script" id=4]
+[ext_resource path="res://characters/shadow.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -150,15 +150,18 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30, 20 )
+extents = Vector2( 30.5911, 26.3305 )
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" groups=[
+"character",
+]]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 0
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Z Index" ]
 stagger_knockback = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
@@ -187,43 +190,47 @@ playback/speed = 1.0
 script = ExtResource( 2 )
 max_health = 9
 
-[node name="Pivot" type="Position2D" parent="." index="3"]
+[node name="PoisonTimer" type="Timer" parent="Health" index="0"]
 
-editor/display_folded = true
-show_behind_parent = true
+process_mode = 1
+wait_time = 1.4
+one_shot = false
+autostart = false
 
-[node name="Shadow" type="Sprite" parent="Pivot" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-self_modulate = Color( 1, 1, 1, 0.502784 )
-show_behind_parent = true
-position = Vector2( -0.13203, -0.124802 )
-scale = Vector2( 0.8, 0.7 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="Body" type="Sprite" parent="Pivot" index="1"]
-
-show_behind_parent = true
-position = Vector2( -0.342688, -61.8997 )
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Material" ]
-
-[node name="Shape" type="CollisionShape2D" parent="." index="4"]
-
-show_behind_parent = true
-position = Vector2( 0.362808, -7.61905 )
+position = Vector2( -1, -7.69296 )
 shape = SubResource( 4 )
+
+[node name="BodyPivot" type="Position2D" parent="." index="4"]
+
+z_index = 2
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="Body" type="Sprite" parent="BodyPivot" index="0"]
+
+texture = ExtResource( 3 )
+offset = Vector2( 0.335912, -58.7778 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="WeaponPivot" type="Position2D" parent="." index="5"]
 
 position = Vector2( 0, -40 )
 z_index = 2
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="WeaponSpawn" type="Position2D" parent="WeaponPivot" index="0"]
 
 position = Vector2( 80, 0 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="Shadow" type="Sprite" parent="." index="6"]
+
+self_modulate = Color( 1, 1, 1, 0.313726 )
+show_behind_parent = true
+position = Vector2( -0.32052, -4.20115 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Visibility" ]
 
 
